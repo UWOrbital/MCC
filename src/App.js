@@ -1,12 +1,18 @@
 import "./App.css";
 import Header from "./components/Header";
-import Body from "./components/Body";
+import Dashboard from "./components/Dashboard";
+import MissionCommands from "./components/MissionCommands";
+import TelemetryData from "./components/TelemetryData";
+import ARORequests from "./components/ARORequests";
 
 function App() {
   return (
     <>
       <Header />
-      <Body />
+      <Dashboard />
+      <MissionCommands />
+      <TelemetryData />
+      <ARORequests />
     </>
   );
 }
