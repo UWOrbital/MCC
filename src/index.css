@@ -17,9 +17,20 @@ code {
 
 .header a {
   text-decoration: none;
+  color: darkblue;
 }
 
 .dashboard {
+  display: flex;
+  padding: 10px;
+}
+
+.missionCommands {
+  display: flex;
+  padding: 10px;
+}
+
+.telemetryData {
   display: flex;
   padding: 10px;
 }

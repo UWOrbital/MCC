@@ -1,15 +1,9 @@
 function MissionCommands() {
   return (
-    <div style={divStyle}>
+    <div className="missionCommands">
       <span>Mission Commands</span>
     </div>
   );
 }
 
 export default MissionCommands;
-
-const divStyle = {
-  height: "100vh",
-  width: "100vw",
-  backgroundColor: "#333"
-};

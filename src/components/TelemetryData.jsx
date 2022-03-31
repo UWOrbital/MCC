@@ -1,15 +1,9 @@
 function TelemetryData() {
   return (
-    <div style={divStyle}>
+    <div className="telemetryData">
       <span>Telemetry Data</span>
     </div>
   );
 }
 
 export default TelemetryData;
-
-const divStyle = {
-  height: "100vh",
-  width: "100vw",
-  backgroundColor: "#333"
-};
