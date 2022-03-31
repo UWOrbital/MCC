@@ -12,15 +12,18 @@ code {
 }
 
 .header {
-  margin: 5px;
+  border-bottom: 1px solid black;
 }
 
-.item {
-  margin-left: 8px;
+.header a {
+  text-decoration: none;
 }
 
-.image {
-  position: absolute;
-  right: 10px;
-  height: 40px;
+.dashboard {
+  display: flex;
+  padding: 10px;
+}
+
+.arorequests {
+  color: black;
 }
