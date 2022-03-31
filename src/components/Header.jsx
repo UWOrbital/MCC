@@ -1,40 +1,31 @@
 import Nav from "react-bootstrap/Nav";
-import logo from "../images/logo.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <Nav style={navStyle} variant="pills" defaultActiveKey="/home">
-      <Nav.Item style={itemStyle}>
-        <Nav.Link eventKey="link-1">Dashboard</Nav.Link>
+    <Nav className="header">
+      <Nav.Item className="item">
+        <Nav.Link eventKey="link-1">
+          <Link to="/">Dashboard</Link>
+        </Nav.Link>
       </Nav.Item>
-      <Nav.Item style={itemStyle}>
-        <Nav.Link eventKey="link-2">Mission Commands</Nav.Link>
+      <Nav.Item className="item">
+        <Nav.Link eventKey="link-2">
+          <Link to="missioncommands">Mission Commands</Link>
+        </Nav.Link>
       </Nav.Item>
-      <Nav.Item style={itemStyle}>
-        <Nav.Link eventKey="link-3">Telemetry Data</Nav.Link>
+      <Nav.Item className="item">
+        <Nav.Link eventKey="link-3">
+          <Link to="telemetrydata">Telemetry Data</Link>
+        </Nav.Link>
       </Nav.Item>
-      <Nav.Item style={itemStyle}>
-        <Nav.Link eventKey="link-4">ARO Requests</Nav.Link>
-      </Nav.Item>
-      <Nav.Item style={itemStyle} disabled>
-        <img src={logo} alt="Logo" style={imgStyle}></img>
+      <Nav.Item className="item">
+        <Nav.Link eventKey="link-4">
+          <Link to="arorequests">ARO Requests</Link>
+        </Nav.Link>
       </Nav.Item>
     </Nav>
   );
 }
 
 export default Header;
-
-const navStyle = {
-  margin: "5px"
-};
-
-const itemStyle = {
-  marginLeft: "8px"
-};
-
-const imgStyle = {
-  position: "absolute",
-  right: "10px",
-  height: "40px"
-};

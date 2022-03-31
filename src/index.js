@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import { initializeApp } from "firebase/app";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { getAnalytics } from "firebase/analytics";
+
+import ARO from "./components/ARORequests";
+import Dashboard from "./components/Dashboard";
+import Header from "./components/Header";
+import MissionCommands from "./components/MissionCommands";
+import TelemetryData from "./components/TelemetryData";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbfXcM1J1u8BVTK3CqxmcUFMvRWDylViY",
@@ -16,13 +22,20 @@ const firebaseConfig = {
   measurementId: "G-JCYQQ2GLKV"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route path="missioncommands" element={<MissionCommands />} />
+        <Route path="telemetrydata" element={<TelemetryData />} />
+        <Route path="arorequests" element={<ARO />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
