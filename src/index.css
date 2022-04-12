@@ -12,29 +12,23 @@ code {
 }
 
 .header {
-  border-bottom: 1px solid black;
+  background-image: url("./images/banner.png");
+  border-bottom: 1px solid darkblue;
 }
 
 .header a {
   text-decoration: none;
-  color: darkblue;
+  color: white;
 }
 
-.dashboard {
+.layout {
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.missionCommands {
-  display: flex;
-  padding: 10px;
-}
-
-.telemetryData {
-  display: flex;
-  padding: 10px;
-}
-
-.arorequests {
-  color: black;
+.logo {
+  height: 150px;
+  width: 450px;
+  background-image: url("./images/logo.png");
 }

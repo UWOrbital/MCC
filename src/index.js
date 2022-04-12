@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 import MissionCommands from "./components/MissionCommands";
 import TelemetryData from "./components/TelemetryData";
+import Logs from "./components/Logs";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbfXcM1J1u8BVTK3CqxmcUFMvRWDylViY",
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="telemetrydata" element={<TelemetryData />} />
         <Route path="arorequests" element={<ARO />} />
       </Routes>
+      <Logs />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

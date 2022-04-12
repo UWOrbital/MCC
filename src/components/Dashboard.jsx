@@ -1,7 +1,9 @@
+// import Image from "react-bootstrap/Image";
+
 function Dashboard() {
   return (
-    <div className="dashboard">
-      <span>Dashboard</span>
+    <div className="dashboard layout">
+      <div className="logo"></div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Table from "react-bootstrap/Table";
 
 function ARORequests() {
   return (
-    <div className="arorequests">
+    <div className="arorequests layout">
       <Table striped bordered hover variant="light">
         <thead>
           <tr>
@@ -14,17 +14,17 @@ function ARORequests() {
         <tbody>
           <tr>
             <td>1</td>
-            <td>Placeholder 1</td>
-            <td>Incomplete 2</td>
+            <td>Placeholder</td>
+            <td>Incomplete</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>Placeholder 2</td>
+            <td>Placeholder</td>
             <td>Incomplete</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Placeholder 3</td>
+            <td>Placeholder</td>
             <td>Incomplete</td>
           </tr>
         </tbody>
