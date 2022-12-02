@@ -1,6 +1,26 @@
 import Table from "react-bootstrap/Table";
+import React from "react";
+import { db } from '../index';
+import { useState, useEffect } from "react";
 
-function ARORequests() {
+
+
+
+const ARORequests = () => {
+  const [users,setUsers]=useState([])
+
+
+  useEffect(async () => {
+    const response=db.collection("users");
+    const data=await response.get();
+    console.log(data);
+    data.docs.forEach(item=>{
+     setUsers([...users,item.data()])
+    })
+  });
+
+
+
   return (
     <div className="arorequests layout">
       <Table striped bordered hover variant="light">
@@ -31,6 +51,6 @@ function ARORequests() {
       </Table>
     </div>
   );
-}
+};
 
 export default ARORequests;
