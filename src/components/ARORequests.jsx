@@ -1,5 +1,4 @@
 import Table from "react-bootstrap/Table";
-import React from "react";
 import { db } from '../index';
 import { useState, useEffect } from "react";
 
@@ -10,13 +9,16 @@ const ARORequests = () => {
   const [users,setUsers]=useState([])
 
 
-  useEffect(async () => {
+  useEffect(() => {
     const response=db.collection("users");
-    const data=await response.get();
-    console.log(data);
-    data.docs.forEach(item=>{
-     setUsers([...users,item.data()])
-    })
+    console.log(response);
+    response.get().then((data) => {
+      console.log(data);
+      const users=data.docs.map((doc) => doc.data());
+      setUsers(users);
+    }).catch((error) => {
+      console.log(error);
+    });
   });
 
 
