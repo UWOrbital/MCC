@@ -1,35 +1,44 @@
 import Table from "react-bootstrap/Table";
+import { useEffect, useState } from "react";
+
+function AROItem({ id, latitude, longitude, status }) {
+  return <>
+    <tr key={id}>
+      <td key={id}>{id}</td>
+      <td key={`${id}longitude`}>{longitude}</td>
+      <td key={`${id}latitude`}>{latitude}</td>
+      <td key={`${id}status`}>{status}</td>
+    </tr>
+  </>
+}
 
 function ARORequests() {
+  const [loading, setLoading] = useState(true)
+  const [aroRequests, setARORequests] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5000/aro-request')
+      .then(response => response.json())
+      .then(data => { setARORequests(data); setLoading(false); });
+  }, [])
+
   return (
     <div className="arorequests layout">
       <Table striped bordered hover variant="light">
         <thead>
           <tr>
             <th>#</th>
-            <th>Current Serviced Requests</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Placeholder</td>
-            <td>Incomplete</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Placeholder</td>
-            <td>Incomplete</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Placeholder</td>
-            <td>Incomplete</td>
-          </tr>
+          {loading ? <tr><td colSpan="4">Loading...</td></tr> :
+            aroRequests.map((item) => { return <AROItem id={item.id} longitude={item.longitude} latitude={item.latitude} status={item.status} /> })}
         </tbody>
       </Table>
-    </div>
+    </div >
   );
 }
 
