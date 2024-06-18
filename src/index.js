@@ -13,6 +13,7 @@ import MissionCommands from "./components/MissionCommands";
 import TelemetryData from "./components/TelemetryData";
 import Logs from "./components/Logs";
 
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyCbfXcM1J1u8BVTK3CqxmcUFMvRWDylViY",
   authDomain: "uw-orbital-mcc.firebaseapp.com",
@@ -22,9 +23,9 @@ const firebaseConfig = {
   appId: "1:784474228563:web:5b4eed8840a8b286cd83a6",
   measurementId: "G-JCYQQ2GLKV"
 };
-
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+*/
 
 ReactDOM.render(
   <React.StrictMode>
