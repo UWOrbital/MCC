@@ -16,9 +16,9 @@ aroRequests = [
 @app.route("/aro-request/{id}")
 @cross_origin()
 def get_aro_request(id):
-    for request in aroRequests:
-        if request["id"] == id:
-            return request
+    for r in aroRequests:
+        if r["id"] == id:
+            return r
     return "Not found", 404
 
 
@@ -32,7 +32,9 @@ def get_all_aro_requests():
 @cross_origin()
 def get_mission_control():
     content = request.json
-    content["status"] = "pending"
+    if content is None or "command" not in content:
+        return "Bad request. Must contain `command` property", 400
+    content["response"] = "Mission control:" + content["command"]
     return content
 
 

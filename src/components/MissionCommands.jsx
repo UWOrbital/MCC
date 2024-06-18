@@ -1,27 +1,46 @@
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
+const MISSON_COMMAND_PREFIX = 'MCC_';
 
 function MissionCommands() {
   const [commands, setCommands] = useState('');
+  const [commandResponse, setCommandResponse] = useState('');
+  const inputRef = useRef(null);
 
+  useEffect(() => {
+    let command = localStorage.getItem(MISSON_COMMAND_PREFIX + "command");
+    let response = localStorage.getItem(MISSON_COMMAND_PREFIX + "response");
+    setCommands(command);
+    setCommandResponse(response);
+  }, []);
 
   const handleChange = (event) => {
     setCommands(event.target.value);
-    console.log(event.target.value);
+    localStorage.setItem(MISSON_COMMAND_PREFIX + "command", event.target.value);
   }
 
   const handleCommand = () => {
-    console.log("Command submitted");
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: commands })
+      body: JSON.stringify({ command: commands })
     };
     fetch('http://localhost:5000/mission-control', requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+        setCommandResponse(data.response)
+        localStorage.setItem(MISSON_COMMAND_PREFIX + "response", data.response);
+      });
+  }
+
+  const clear = () => {
+    localStorage.clear()
+    setCommands('')
+    setCommandResponse('')
+    inputRef.current.value = ''
   }
 
   return (
@@ -34,20 +53,22 @@ function MissionCommands() {
           aria-label="Small"
           aria-describedby="inputGroup-sizing-sm"
           onChange={handleChange}
+          ref={inputRef}
         />
       </InputGroup>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Output</th>
+            <th>Output: {Date()}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Placeholder</td>
+            {commandResponse && <td>{commandResponse}</td>}
           </tr>
         </tbody>
       </Table>
+      <button onClick={clear}>Clear</button>
     </div>
   );
 }
