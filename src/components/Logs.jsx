@@ -15,15 +15,16 @@ function LogItem({ id }) {
   }
 
   useEffect(() => {
-    fetchLogData()
-    setInterval(fetchLogData, 10000)
+    fetchLogData();
+    const interval = setInterval(fetchLogData, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <tr key={date}>
-      {loading ? <td key={`${id}loading`}>Loading...</td> : <>
-        <td key={`${date}Date`}>{date}</td>
-        <td key={`${date}Log`} >{log}</td > </>}
+    <tr >
+      {loading ? <td >Loading...</td> : <>
+        <td >{date}</td>
+        <td >{log}</td > </>}
     </tr >
   );
 }
@@ -39,7 +40,7 @@ function Logs() {
             <th>Log</th>
           </tr>
         </thead>
-        <tbody>{[...Array(count).keys()].map(key => <LogItem id={key} />)}</tbody>
+        <tbody>{[...Array(count).keys()].map(key => <LogItem key={key} id={key} />)}</tbody>
       </Table>
     </div>
   );

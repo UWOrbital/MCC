@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 
 function AROItem({ id, latitude, longitude, status }) {
   return <>
-    <tr key={id}>
-      <td key={id}>{id}</td>
-      <td key={`${id}longitude`}>{longitude}</td>
-      <td key={`${id}latitude`}>{latitude}</td>
-      <td key={`${id}status`}>{status}</td>
+    <tr >
+      <td >{id}</td>
+      <td >{longitude}</td>
+      <td >{latitude}</td>
+      <td >{status}</td>
     </tr>
   </>
 }
@@ -35,7 +35,7 @@ function ARORequests() {
         </thead>
         <tbody>
           {loading ? <tr><td colSpan="4">Loading...</td></tr> :
-            aroRequests.map((item) => { return <AROItem id={item.id} longitude={item.longitude} latitude={item.latitude} status={item.status} /> })}
+            aroRequests.map((item) => { return <AROItem key={item.id} id={item.id} longitude={item.longitude} latitude={item.latitude} status={item.status} /> })}
         </tbody>
       </Table>
     </div >
